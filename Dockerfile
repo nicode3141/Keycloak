@@ -8,7 +8,7 @@ ADD --chown=keycloak:keycloak https://github.com/wadahiro/keycloak-discord/relea
 RUN ls
 RUN rm -r /opt/keycloak/themes/
 
-COPY /theme/spotifyapi /opt/keycloak/themes/spotifyapi
+COPY /theme/spotifyapi /opt/keycloak/themes/spotifyapidev
 
 RUN /opt/keycloak/bin/kc.sh build
 
