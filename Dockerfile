@@ -12,6 +12,8 @@ FROM fedora AS bins
 
 RUN curl -fsSL https://github.com/caddyserver/caddy/releases/download/v2.7.4/caddy_2.7.4_linux_amd64.tar.gz | tar -zxvf - caddy
 RUN curl -fsSL https://github.com/nicolas-van/multirun/releases/download/1.1.3/multirun-x86_64-linux-gnu-1.1.3.tar.gz | tar -zxvf - multirun
+RUN cd /opt/keycloak/themes/spotifyapi \
+  curl -fsSL https://github.com/nicode3141/spotifyAPI-keycloak-theme.git
 
 FROM quay.io/keycloak/keycloak:22.0.1
 
@@ -23,9 +25,6 @@ COPY --from=bins --chmod=0755 /multirun /usr/bin/multirun
 COPY --from=bins --chmod=0755 /caddy /usr/bin/caddy
 
 WORKDIR /app
-
-RUN apt-get -y install git
-RUN git clone https://github.com/nicode3141/spotifyAPI-keycloak-theme.git /opt/keycloak/themes/spotifyapi/
 
 COPY Caddyfile ./
 
