@@ -4,8 +4,7 @@ ARG KC_HEALTH_ENABLED KC_METRICS_ENABLED KC_FEATURES KC_DB KC_HTTP_ENABLED PROXY
 
 ADD --chown=keycloak:keycloak https://github.com/klausbetz/apple-identity-provider-keycloak/releases/download/1.7.1/apple-identity-provider-1.7.1.jar /opt/keycloak/providers/apple-identity-provider-1.7.1.jar
 ADD --chown=keycloak:keycloak https://github.com/wadahiro/keycloak-discord/releases/download/v0.5.0/keycloak-discord-0.5.0.jar /opt/keycloak/providers/keycloak-discord-0.5.0.jar
-RUN apt-get -y install git
-RUN git clone https://github.com/nicode3141/spotifyAPI-keycloak-theme.git /opt/keycloak/themes/spotifyapi/
+COPY /theme/spotifyapi /opt/keycloak/themes/spotifyapi
 
 RUN /opt/keycloak/bin/kc.sh build
 
@@ -24,6 +23,9 @@ COPY --from=bins --chmod=0755 /multirun /usr/bin/multirun
 COPY --from=bins --chmod=0755 /caddy /usr/bin/caddy
 
 WORKDIR /app
+
+RUN apt-get -y install git
+RUN git clone https://github.com/nicode3141/spotifyAPI-keycloak-theme.git /opt/keycloak/themes/spotifyapi/
 
 COPY Caddyfile ./
 
