@@ -105,7 +105,7 @@
         <div class="btmTxt">log in with your moodle credentials</div>        
         <script type="module" src="${url.resourcesPath}/js/passwordVisibility.js"></script>
         </div>
-        <div class="addLegalInfo">Copyright © 2024 Nicolas Pfeifer. <span class="breakHelper">All rights reserved. </span><br/>
+        <div class="addLegalInfo">Moodle login will be available on Tuesday, 20th, at 12:00 PM. </span><br/>
  This site is licensed under the <a href="https://github.com/nicode3141/spotifyAPI-keycloak-theme/blob/main/LICENSE" class="legalMITLink">MIT License.</a></div>
     <#elseif section = "info" >
 
